@@ -1,2 +1,2 @@
 # Technee-Safra-Java-Rest-Application
- Aplicação java desenvolvida para facilitar a comunicação entre o APP Mobile e a API Safra
+ Aplicação java desenvolvida no framework Spring para facilitar a comunicação REST entre a API de Chatbot e a API do banco safra.
