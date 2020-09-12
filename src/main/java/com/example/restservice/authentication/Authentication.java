@@ -1,7 +1,7 @@
 package com.example.restservice.authentication;
 
+
 import org.springframework.http.*;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 @Service
 public class Authentication {
 
-    @Scheduled(fixedRate = 60000)
+
     public String getBearer() {
         ResponseEntity<String> response = null;
         RestTemplate restTemplate = new RestTemplate();
@@ -30,7 +30,14 @@ public class Authentication {
         HttpEntity<String> request = new HttpEntity<String>(body,headers);
         response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
 
-        System.out.println("Print: " + response.getBody() + "\n");
+        System.out.println(response.getBody());
 
-        return response.getBody();    }
+        String s = response.getBody();
+        String[] parts = s.split("\""); //returns an array with the 2 parts
+        String firstPart = parts[3]; //14.015
+
+        System.out.println(firstPart);
+
+        return firstPart;
+    }
 }
