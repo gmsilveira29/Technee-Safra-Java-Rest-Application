@@ -30,13 +30,13 @@ public class Authentication {
         HttpEntity<String> request = new HttpEntity<String>(body,headers);
         response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
 
-        System.out.println(response.getBody());
+     //   System.out.println(response.getBody());
 
         String s = response.getBody();
         String[] parts = s.split("\""); //returns an array with the 2 parts
         String firstPart = parts[3]; //14.015
 
-        System.out.println(firstPart);
+     //   System.out.println(firstPart);
 
         return firstPart;
     }

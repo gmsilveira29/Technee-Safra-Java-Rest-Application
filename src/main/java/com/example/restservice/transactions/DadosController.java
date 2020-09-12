@@ -26,8 +26,16 @@ public class DadosController {
 
         response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
 
-        System.out.println("Dados da conta: \n" +  response.getBody());
+        String s = response.getBody();
+        String[] parts = s.split("\""); //returns an array with the 2 parts
+        String numeroConta = parts[7]; //14.015
+        String apelido = parts[15];
+        String identidade = parts[25];
+        String nomeConta = parts[29]; //14.015
 
-        return response.getBody();
+        return "Número da conta: "+ numeroConta +
+                "\nNome: " + nomeConta +
+                "\nApelido: " + apelido +
+                "\nIdentidade: " + identidade;
     }
 }

@@ -30,9 +30,16 @@ public class ExtratoController {
 
         response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
 
-        System.out.println("Extrato: \n" +  response.getBody());
+        String s = response.getBody();
+        String[] parts = s.split("\""); //returns an array with the 2 parts
+        String valor = parts[17]; //14.015
+        String data = parts[33];
+        String tipo = parts[25];
+        String info = parts[41]; //14.015
 
-        //List<String> saldo = JsonPath.read(response.getBody(), "$.Data.Balance[*].Amount.Amount");
-        return response.getBody();
+        return "Valor: R$ "+ valor +
+                "\nData: " + data +
+                "\nTipo de transação: " + tipo +
+                "\nInfo: " + info;
     }
 }

@@ -29,9 +29,11 @@ public class SaldoController {
 
         response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
 
-        System.out.println("Saldo: \n" + response.getBody());
 
-        //List<String> saldo = JsonPath.read(response.getBody(), "$.Data.Balance[*].Amount.Amount");
-        return response.getBody();
+        String s = response.getBody();
+        String[] parts = s.split("\""); //returns an array with the 2 parts
+        String saldo = parts[13]; //14.015
+
+        return "Saldo: R$ " + saldo;
     }
 }
