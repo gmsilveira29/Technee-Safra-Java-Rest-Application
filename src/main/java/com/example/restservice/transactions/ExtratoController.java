@@ -11,6 +11,7 @@ import java.util.Arrays;
 //import com.jayway.jsonpath.JsonPath;
 
 @RestController
+//classe responsável por retornar o extrato bancário
 public class ExtratoController {
 
     @GetMapping("/extrato")
@@ -20,18 +21,20 @@ public class ExtratoController {
 
         ResponseEntity<String> response = null;
         RestTemplate restTemplate = new RestTemplate();
-
+        //header
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.add("Authorization", "Bearer "+ authentication.getBearer());
 
         HttpEntity<String> request = new HttpEntity<String>(headers);
+        //url
         String url = "https://af3tqle6wgdocsdirzlfrq7w5m.apigateway.sa-saopaulo-1.oci.customer-oci.com/fiap-sandbox/open-banking/v1/accounts/00711234511/transactions";
 
         response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
 
+        //regex para selecionar o valor, data, tipo de transação e info do extrato
         String s = response.getBody();
-        String[] parts = s.split("\""); //returns an array with the 2 parts
+        String[] parts = s.split("\"");
         String valor = parts[17]; //14.015
         String data = parts[33];
         String tipo = parts[25];

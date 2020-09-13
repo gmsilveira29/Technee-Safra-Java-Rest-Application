@@ -13,21 +13,23 @@ import java.util.Arrays;
 
 public class TransferenciaController {
 
+    // funcionalidade de transferencia funcionado de forma mockada
+    // por falta de tempo não foi implementada no chatbot, mas foi criada aqui
     @GetMapping("/transferencia")
     public String getTransferencia() {
         Authentication authentication = new Authentication();
         ResponseEntity<String> response = null;
         RestTemplate restTemplate = new RestTemplate();
-        //URL
+        //url
         String url = "https://af3tqle6wgdocsdirzlfrq7w5m.apigateway.sa-saopaulo-1.oci.customer-oci.com/fiap-sandbox/accounts/v1/accounts/00711234511/transfers";
 
-        //HEADER
+        //header
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.add("Authorization", "Bearer "+ authentication.getBearer());
         headers.add("content-type", "application/json");
 
-        //BODY
+        //body
         String body = "{\n" +
                 "\t\n" +
                 "\t  \"Type\": \"TEF\",\n" +
@@ -49,7 +51,7 @@ public class TransferenciaController {
                 "\t\t\t\t\t  \n" +
                 "} ";
 
-        //REQUEST
+        //request
         HttpEntity<String> request = new HttpEntity<String>(body,headers);
         response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
 
