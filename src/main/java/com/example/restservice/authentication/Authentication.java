@@ -16,12 +16,12 @@ public class Authentication {
         ResponseEntity<String> response = null;
         RestTemplate restTemplate = new RestTemplate();
         //url
-        String url = "https://idcs-902a944ff6854c5fbe94750e48d66be5.identity.oraclecloud.com/oauth2/v1/token";
+        String url = "...";
 
         //header
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        headers.add("authorization", "Basic ZjlkM2NkOTYwMDg3NGFjMjgwM2QwM2NhNzA5Yjc4ZWI6MWEyMDc1ZTMtYjE1ZS00MzI0LTkwMmMtMGYxMmY4ZjA4MDgy");
+        headers.add("authorization", "Basic ...");
         headers.add("content-type", "application/x-www-form-urlencoded");
 
         //definição do body
