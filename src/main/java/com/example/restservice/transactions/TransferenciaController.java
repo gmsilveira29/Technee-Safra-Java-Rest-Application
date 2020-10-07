@@ -21,7 +21,7 @@ public class TransferenciaController {
         ResponseEntity<String> response = null;
         RestTemplate restTemplate = new RestTemplate();
         //url
-        String url = "https://af3tqle6wgdocsdirzlfrq7w5m.apigateway.sa-saopaulo-1.oci.customer-oci.com/fiap-sandbox/accounts/v1/accounts/00711234511/transfers";
+        String url = "...";
 
         //header
         HttpHeaders headers = new HttpHeaders();
