@@ -25,7 +25,7 @@ public class DadosController {
 
         HttpEntity<String> request = new HttpEntity<String>(headers);
         //url
-        String url = "https://af3tqle6wgdocsdirzlfrq7w5m.apigateway.sa-saopaulo-1.oci.customer-oci.com/fiap-sandbox/open-banking/v1/accounts/00711234511";
+        String url = "...";
 
         response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
 
